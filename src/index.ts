@@ -8,6 +8,7 @@ import { showRoutes } from "hono/dev";
 import { logger as httpLogger } from "hono/logger";
 import { trimTrailingSlash } from "hono/trailing-slash";
 
+import { NODE_ENVIRONMENTS } from "./lib/constants";
 import { logger } from "./lib/logger";
 import { Routes } from "./web/routes";
 
@@ -22,7 +23,7 @@ app.use(trimTrailingSlash());
 const routes = new Routes(app);
 routes.configure();
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === NODE_ENVIRONMENTS.development) {
   console.log("Available routes:");
   showRoutes(app);
 }
