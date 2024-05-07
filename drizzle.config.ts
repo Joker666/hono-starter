@@ -2,8 +2,8 @@ import 'dotenv/config';
 import type { Config } from 'drizzle-kit';
 
 export default {
-  schema: './src/schema/migration/*',
-  out: './src/schema/out',
+  schema: './schema/migration/*',
+  out: './schema/out',
   driver: 'mysql2',
   dbCredentials: {
     host: process.env.DB_HOST!,

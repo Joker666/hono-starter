@@ -1,3 +1,5 @@
+## Run the app
+
 ```bash
 pnpm install
 pnpm run dev
@@ -7,8 +9,15 @@ pnpm run dev
 open http://localhost:3000
 ```
 
-## Generate migration
+## Migration
+
+### Generate
 
 ```bash
 pnpm drizzle-kit generate:mysql
+```
+
+### Migrate
+```bash
+pnpm tsx schema/migrate.ts
 ```

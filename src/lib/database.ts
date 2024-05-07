@@ -9,4 +9,4 @@ const connection = await mysql.createConnection({
 });
 
 const db = drizzle(connection);
-export { db };
+export { connection, db };

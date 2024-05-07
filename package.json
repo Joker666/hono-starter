@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts | pino-pretty"
   },
+  "type": "module",
   "dependencies": {
     "@hono/node-server": "^1.11.1",
     "dotenv": "^16.4.5",
