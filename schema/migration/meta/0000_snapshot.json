@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "f277ab91-2bf7-4568-a2e1-c8c129448f27",
+  "id": "6960f1bf-89d2-4cd0-a6f8-46b72e5aecb9",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "user": {
@@ -30,6 +30,13 @@
         },
         "password": {
           "name": "password",
+          "type": "varchar(65)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reset_token": {
+          "name": "reset_token",
           "type": "varchar(100)",
           "primaryKey": false,
           "notNull": false,
