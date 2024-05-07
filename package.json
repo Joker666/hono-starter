@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "dev": "tsx watch src/index.ts | pino-pretty"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "dotenv": "^16.4.5",
+    "hono": "^4.3.2",
+    "http-status-codes": "^2.3.0",
+    "pino": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "tsx": "^4.7.1"
+  }
+}
