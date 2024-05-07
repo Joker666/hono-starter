@@ -1,5 +1,7 @@
 import { Hono } from "hono";
 import { getReasonPhrase, StatusCodes } from "http-status-codes";
+import { UserRepository } from "../repository/user";
+import { UserService } from "../service/user";
 import { AuthController } from "./controller/auth";
 
 export class Routes {
@@ -25,8 +27,14 @@ export class Routes {
 
     const api = this.app.basePath("/v1");
 
+    // Setup repos
+    const userRepo = new UserRepository();
+
+    // Setup services
+    const userService = new UserService(userRepo);
+
     // Setup controllers
-    const authController = new AuthController();
+    const authController = new AuthController(userService);
 
     // Register routes
     this.registerUserRoutes(api, authController);
