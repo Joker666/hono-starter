@@ -22,15 +22,11 @@ app.use(trimTrailingSlash());
 const routes = new Routes(app);
 routes.configure();
 
-const port = parseInt(process.env.PORT!);
-logger.info(`Server is running on port: ${port}, env: ${process.env.NODE_ENV}`);
-
 if (process.env.NODE_ENV === "development") {
   console.log("Available routes:");
   showRoutes(app);
 }
 
-serve({
-  fetch: app.fetch,
-  port,
-});
+const port = parseInt(process.env.PORT!);
+logger.info(`Server is running on port: ${port}, env: ${process.env.NODE_ENV}`);
+serve({ fetch: app.fetch, port });
