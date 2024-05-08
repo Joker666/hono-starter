@@ -3,4 +3,6 @@ const NODE_ENVIRONMENTS = {
   production: 'production',
 };
 
-export { NODE_ENVIRONMENTS };
+const TRACING = 'tracing';
+
+export { NODE_ENVIRONMENTS, TRACING };

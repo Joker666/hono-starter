@@ -11,11 +11,13 @@ import { trimTrailingSlash } from 'hono/trailing-slash';
 import { NODE_ENVIRONMENTS } from './lib/constants';
 import { logger } from './lib/logger';
 import { Routes } from './web/routes';
+import { tracing } from './web/middlelayer/tracing';
 
 const app = new Hono({ strict: true });
 
 // Generic middlewares
 app.use(cors());
+app.use(tracing);
 app.use(compress());
 app.use(httpLogger());
 app.use(trimTrailingSlash());
