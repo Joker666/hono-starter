@@ -1,3 +1,20 @@
+# Hono Starter
+
+A hono starter boilerplate for TypeScript with minimal dependencies and clean architecture. All dependencies are
+initiated at the start of the application and passed to the controllers and services.
+
+## Stack
+
+- Authentication: JWT
+- Validation: Zod
+- Logging: Pino
+- ORM: Drizzle
+- DB: MySQL
+- Framework: Hono
+- Runtime: NodeJS
+- Language: TypeScript
+- Package Manager: PNPM
+
 ## Install dependencies
 
 ```bash
