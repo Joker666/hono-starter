@@ -1,5 +1,5 @@
-import { UserRepository } from '../repository/user';
 import { encrypt } from '../lib/encryption';
+import { UserRepository } from '../repository/user';
 
 export class UserService {
   private repo: UserRepository;
@@ -13,11 +13,7 @@ export class UserService {
 
   public async create(name: string, email: string, password: string) {
     const hashedPassword = encrypt(password);
-    await this.repo.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
+    await this.repo.create({ name, email, password: hashedPassword });
   }
 
   public async findByEmail(email: string) {
