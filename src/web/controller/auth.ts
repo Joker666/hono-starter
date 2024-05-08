@@ -1,8 +1,10 @@
 import { Context } from 'hono';
+import { DB_ERRORS } from '../../lib/constants';
+import { DatabaseError } from '../../lib/database';
 import { verify } from '../../lib/encryption';
 import { encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
-import { ERRORS, serveBadRequest, serveUnauthorized } from './resp/error';
+import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
 
 export class AuthController {
@@ -35,7 +37,11 @@ export class AuthController {
     try {
       await this.service.create(body.name, body.email, body.password);
     } catch (err) {
-      return serveBadRequest(c, ERRORS.USER_EXISTS);
+      const e = err as DatabaseError;
+      if (e.code === DB_ERRORS.DUPLICATE_KEY) {
+        return serveBadRequest(c, ERRORS.USER_EXISTS);
+      }
+      return serveInternalServerError(c, err);
     }
     const user = await this.service.findByEmail(body.email);
     const token = await encode(user!.id, user!.email);

@@ -5,4 +5,8 @@ const NODE_ENVIRONMENTS = {
 
 const TRACING = 'tracing';
 
-export { NODE_ENVIRONMENTS, TRACING };
+const DB_ERRORS = {
+  DUPLICATE_KEY: 'ER_DUP_ENTRY',
+};
+
+export { DB_ERRORS, NODE_ENVIRONMENTS, TRACING };
