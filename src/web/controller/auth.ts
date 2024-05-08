@@ -1,9 +1,8 @@
 import { Context } from 'hono';
-import { HTTPException } from 'hono/http-exception';
-import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { verify } from '../../lib/encryption';
 import { encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
+import { serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
 
 export class AuthController {
@@ -21,11 +20,11 @@ export class AuthController {
     const body = await c.req.json();
     const user = await this.service.findByEmail(body.email);
     if (!user) {
-      throw new HTTPException(StatusCodes.UNAUTHORIZED, { message: getReasonPhrase(StatusCodes.UNAUTHORIZED) });
+      return serveUnauthorized(c);
     }
     const isVerified = verify(body.password, user.password);
     if (!isVerified) {
-      throw new HTTPException(StatusCodes.UNAUTHORIZED, { message: getReasonPhrase(StatusCodes.UNAUTHORIZED) });
+      return serveUnauthorized(c);
     }
     const token = await encode(user.id, user.email);
     return serveData(c, { user, token });
