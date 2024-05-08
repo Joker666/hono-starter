@@ -4,7 +4,7 @@ import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
 import { AuthController } from './controller/auth';
 import { serveNotFound } from './controller/resp/error';
-import { userRegistrationValidator } from './controller/validator/user';
+import { loginValidator, registrationValidator } from './controller/validator/user';
 
 export class Routes {
   private app: Hono;
@@ -44,8 +44,8 @@ export class Routes {
     const authCheck = jwt({ secret: process.env.SECRET_KEY! });
 
     user.get('/me', authCheck, authCtrl.me);
-    user.post('/login', authCtrl.login);
-    user.post('/register', userRegistrationValidator, authCtrl.register);
+    user.post('/login', loginValidator, authCtrl.login);
+    user.post('/register', registrationValidator, authCtrl.register);
 
     api.route('/user', user);
   }

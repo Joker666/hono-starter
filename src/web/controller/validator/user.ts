@@ -1,19 +1,22 @@
 import { validator } from 'hono/validator';
 import { z } from 'zod';
-import { serveUnprocessableEntity } from '../resp/error';
-import { getErrorPhrase } from './validator';
+import { validateSchema } from './validator';
 
-const userRegistrationValidator = validator('json', (value, c) => {
-  const schema = z.object({
-    name: z.string().min(4).max(40),
-    email: z.string().email(),
-    password: z.string().min(8).max(20),
-  });
-  const parsed = schema.safeParse(value);
-  if (!parsed.success) {
-    return serveUnprocessableEntity(c, getErrorPhrase(parsed.error));
-  }
-  return parsed.data;
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8).max(20),
 });
 
-export { userRegistrationValidator };
+const loginValidator = validator('json', (value, c) => {
+  return validateSchema(c, loginSchema, value);
+});
+
+const registrationSchema = loginSchema.extend({
+  name: z.string().min(4).max(40),
+});
+
+const registrationValidator = validator('json', (value, c) => {
+  return validateSchema(c, registrationSchema, value);
+});
+
+export { loginValidator, registrationValidator };
