@@ -5,12 +5,9 @@ import * as schema from '../../schema/schema';
 import { userTable } from '../../schema/schema';
 import { logger } from './logger';
 
-const connection = await mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+const DB_ERRORS = {
+  DUPLICATE_KEY: 'ER_DUP_ENTRY',
+};
 
 export interface DatabaseError {
   type: string;
@@ -23,10 +20,6 @@ export interface DatabaseError {
   sqlMessage: string;
 }
 
-const DB_ERRORS = {
-  DUPLICATE_KEY: 'ER_DUP_ENTRY',
-};
-
 export type User = typeof userTable.$inferSelect;
 export type NewUser = typeof userTable.$inferInsert;
 
@@ -35,6 +28,13 @@ class DBLogger implements drizzleLogger {
     logger.debug({ query, params });
   }
 }
+
+const connection = await mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 
 const db = drizzle(connection, { schema: schema, mode: 'default', logger: new DBLogger() });
 export { DB_ERRORS, connection, db };

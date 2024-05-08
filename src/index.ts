@@ -13,7 +13,7 @@ import { logger } from './lib/logger';
 import { Routes } from './web/routes';
 import { tracing } from './web/middlelayer/tracing';
 
-const app = new Hono({ strict: true });
+const app = new Hono();
 
 // Generic middlewares
 app.use(cors());

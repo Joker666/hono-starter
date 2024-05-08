@@ -19,4 +19,4 @@ const check = async (token: string): Promise<JWTPayload> => {
   return await verify(token, process.env.SECRET_KEY!);
 };
 
-export { JWTPayload, check, encode };
+export { JWTPayload, encode };
