@@ -3,7 +3,7 @@ import { jwt } from 'hono/jwt';
 import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
 import { AuthController } from './controller/auth';
-import { serveNotFound } from './controller/resp/error';
+import { serveInternalServerError, serveNotFound } from './controller/resp/error';
 import { loginValidator, registrationValidator } from './controller/validator/user';
 
 export class Routes {
@@ -22,6 +22,11 @@ export class Routes {
     // Universal catchall
     this.app.notFound((c) => {
       return serveNotFound(c);
+    });
+
+    // Error handling
+    this.app.onError((err, c) => {
+      return serveInternalServerError(c, err);
     });
 
     const api = this.app.basePath('/v1');
