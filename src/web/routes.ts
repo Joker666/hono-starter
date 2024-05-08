@@ -1,9 +1,9 @@
 import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
-import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
 import { AuthController } from './controller/auth';
+import { serveNotFound } from './controller/resp/error';
 
 export class Routes {
   private app: Hono;
@@ -20,7 +20,7 @@ export class Routes {
 
     // Universal catchall
     this.app.notFound((c) => {
-      return c.text(getReasonPhrase(StatusCodes.NOT_FOUND), StatusCodes.NOT_FOUND);
+      return serveNotFound(c);
     });
 
     const api = this.app.basePath('/v1');
