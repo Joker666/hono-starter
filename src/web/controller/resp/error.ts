@@ -10,6 +10,10 @@ const serveBadRequest = (c: Context, message: string) => {
   return c.json({ error: message }, <StatusCode>StatusCodes.BAD_REQUEST);
 };
 
+const serveUnprocessableEntity = (c: Context, message: string) => {
+  return c.json({ error: message }, <StatusCode>StatusCodes.UNPROCESSABLE_ENTITY);
+};
+
 const serveUnauthorized = (c: Context) => {
   return c.json({ error: getReasonPhrase(StatusCodes.UNAUTHORIZED) }, <StatusCode>StatusCodes.UNAUTHORIZED);
 };
@@ -26,4 +30,12 @@ const ERRORS = {
   USER_EXISTS: 'User already exists',
 };
 
-export { ERRORS, serveBadRequest, serveError, serveInternalServerError, serveNotFound, serveUnauthorized };
+export {
+  ERRORS,
+  serveBadRequest,
+  serveError,
+  serveInternalServerError,
+  serveNotFound,
+  serveUnauthorized,
+  serveUnprocessableEntity,
+};

@@ -4,6 +4,7 @@ import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
 import { AuthController } from './controller/auth';
 import { serveNotFound } from './controller/resp/error';
+import { userRegistrationValidator } from './controller/validator/user';
 
 export class Routes {
   private app: Hono;
@@ -44,7 +45,7 @@ export class Routes {
 
     user.get('/me', authCheck, authCtrl.me);
     user.post('/login', authCtrl.login);
-    user.post('/register', authCtrl.register);
+    user.post('/register', userRegistrationValidator, authCtrl.register);
 
     api.route('/user', user);
   }
