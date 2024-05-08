@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { jwt } from "hono/jwt";
 import { getReasonPhrase, StatusCodes } from "http-status-codes";
 import { UserRepository } from "../repository/user";
 import { UserService } from "../service/user";
@@ -42,8 +43,9 @@ export class Routes {
 
   private registerUserRoutes(api: Hono, authCtrl: AuthController) {
     const user = new Hono();
+    const authCheck = jwt({ secret: process.env.SECRET_KEY! });
 
-    user.get("/me", authCtrl.me);
+    user.get("/me", authCheck, authCtrl.me);
     user.post("/login", authCtrl.login);
     user.post("/register", authCtrl.register);
 

@@ -30,7 +30,9 @@ export class AuthController {
     return c.json({ user, token });
   }
 
-  public me(c: Context) {
-    return c.json("me");
+  public async me(c: Context) {
+    const payload: JWTPayload = c.get('jwtPayload');
+    const user = await this.service.findByEmail(payload.email);
+    return c.json(user);
   }
 }
