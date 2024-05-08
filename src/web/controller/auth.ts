@@ -1,4 +1,6 @@
 import { Context } from "hono";
+import { HTTPException } from "hono/http-exception";
+import { getReasonPhrase, StatusCodes } from "http-status-codes";
 import { verify } from "../../lib/encryption";
 import { encode } from "../../lib/jwt";
 import { UserService } from "../../service/user";
@@ -18,6 +20,10 @@ export class AuthController {
     const body = await c.req.json();
     const user = await this.service.findByEmail(body.email);
     const isVerified = verify(body.password, user!.password);
+    if (!isVerified)
+      throw new HTTPException(StatusCodes.UNAUTHORIZED, {
+        message: getReasonPhrase(StatusCodes.UNAUTHORIZED),
+      });
     const token = await encode(user!.id, user!.email);
     return c.json({ user, token });
   }
@@ -31,7 +37,7 @@ export class AuthController {
   }
 
   public async me(c: Context) {
-    const payload: JWTPayload = c.get('jwtPayload');
+    const payload: JWTPayload = c.get("jwtPayload");
     const user = await this.service.findByEmail(payload.email);
     return c.json(user);
   }
