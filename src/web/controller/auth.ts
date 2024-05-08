@@ -1,4 +1,5 @@
 import { Context } from "hono";
+import { encode } from "../../lib/jwt";
 import { UserService } from "../../service/user";
 
 export class AuthController {
@@ -20,7 +21,8 @@ export class AuthController {
     const body = await c.req.json();
     await this.service.create(body.name, body.email, body.password);
     const user = await this.service.findByEmail(body.email);
-    return c.json(user);
+    const token = await encode(user!.id, user!.email);
+    return c.json({ user, token });
   }
 
   public me(c: Context) {
