@@ -19,4 +19,7 @@ const registrationValidator = validator('json', (value, c) => {
   return validateSchema(c, registrationSchema, value);
 });
 
-export { loginValidator, registrationValidator };
+type LoginBody = z.infer<typeof loginSchema>;
+type RegistrationBody = z.infer<typeof registrationSchema>;
+
+export { LoginBody, RegistrationBody, loginValidator, registrationValidator };

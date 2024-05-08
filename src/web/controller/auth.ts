@@ -5,6 +5,7 @@ import { encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
 import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
+import { LoginBody, RegistrationBody } from './validator/user';
 
 export class AuthController {
   private service: UserService;
@@ -18,7 +19,7 @@ export class AuthController {
   }
 
   public async login(c: Context) {
-    const body = await c.req.json();
+    const body: LoginBody = await c.req.json();
     const user = await this.service.findByEmail(body.email);
     if (!user) {
       return serveUnauthorized(c);
@@ -32,7 +33,7 @@ export class AuthController {
   }
 
   public async register(c: Context) {
-    const body = await c.req.json();
+    const body: RegistrationBody = await c.req.json();
     try {
       await this.service.create(body.name, body.email, body.password);
     } catch (err) {
