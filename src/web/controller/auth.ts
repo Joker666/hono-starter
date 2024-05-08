@@ -19,12 +19,14 @@ export class AuthController {
   public async login(c: Context) {
     const body = await c.req.json();
     const user = await this.service.findByEmail(body.email);
-    const isVerified = verify(body.password, user!.password);
-    if (!isVerified)
-      throw new HTTPException(StatusCodes.UNAUTHORIZED, {
-        message: getReasonPhrase(StatusCodes.UNAUTHORIZED),
-      });
-    const token = await encode(user!.id, user!.email);
+    if (!user) {
+      throw new HTTPException(StatusCodes.UNAUTHORIZED, { message: getReasonPhrase(StatusCodes.UNAUTHORIZED) });
+    }
+    const isVerified = verify(body.password, user.password);
+    if (!isVerified) {
+      throw new HTTPException(StatusCodes.UNAUTHORIZED, { message: getReasonPhrase(StatusCodes.UNAUTHORIZED) });
+    }
+    const token = await encode(user.id, user.email);
     return c.json({ user, token });
   }
 
