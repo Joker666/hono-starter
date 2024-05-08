@@ -44,7 +44,10 @@ export class AuthController {
       return serveInternalServerError(c, err);
     }
     const user = await this.service.findByEmail(body.email);
-    const token = await encode(user!.id, user!.email);
+    if (!user) {
+      return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
+    }
+    const token = await encode(user.id, user.email);
     return serveData(c, { user, token });
   }
 
