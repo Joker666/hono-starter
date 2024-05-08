@@ -3,9 +3,9 @@ import { DB_ERRORS, DatabaseError } from '../../lib/database';
 import { verify } from '../../lib/encryption';
 import { JWTPayload, encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
+import { LoginBody, RegistrationBody } from '../middlelayer/validator/user';
 import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
-import { LoginBody, RegistrationBody } from './validator/user';
 
 export class AuthController {
   private service: UserService;

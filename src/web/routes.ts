@@ -4,7 +4,7 @@ import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
 import { AuthController } from './controller/auth';
 import { serveInternalServerError, serveNotFound } from './controller/resp/error';
-import { loginValidator, registrationValidator } from './controller/validator/user';
+import { loginValidator, registrationValidator } from './middlelayer/validator/user';
 
 export class Routes {
   private app: Hono;

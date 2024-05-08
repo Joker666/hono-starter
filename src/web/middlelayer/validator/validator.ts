@@ -1,6 +1,6 @@
 import { Context } from 'hono';
 import { ZodError, ZodObject } from 'zod';
-import { serveUnprocessableEntity } from '../resp/error';
+import { serveUnprocessableEntity } from '../../controller/resp/error';
 
 const getErrorPhrase = (error: ZodError) => {
   const path = error.issues[0].path[0];
