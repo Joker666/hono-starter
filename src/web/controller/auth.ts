@@ -1,7 +1,7 @@
 import { Context } from 'hono';
 import { DB_ERRORS, DatabaseError } from '../../lib/database';
 import { verify } from '../../lib/encryption';
-import { encode } from '../../lib/jwt';
+import { JWTPayload, encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
 import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';

@@ -1,5 +1,11 @@
 import { sign, verify } from 'hono/jwt';
 
+type JWTPayload = {
+  sub: number;
+  email: string;
+  exp: Number;
+};
+
 const encode = async (id: number, email: string) => {
   const payload: JWTPayload = {
     sub: id,
@@ -13,4 +19,4 @@ const check = async (token: string): Promise<JWTPayload> => {
   return await verify(token, process.env.SECRET_KEY!);
 };
 
-export { check, encode };
+export { JWTPayload, check, encode };
