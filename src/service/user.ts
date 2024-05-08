@@ -1,5 +1,5 @@
-import { UserRepository } from "../repository/user";
-import { encrypt } from "../lib/encryption";
+import { UserRepository } from '../repository/user';
+import { encrypt } from '../lib/encryption';
 
 export class UserService {
   private repo: UserRepository;

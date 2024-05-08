@@ -1,4 +1,4 @@
-import { sign, verify } from "hono/jwt";
+import { sign, verify } from 'hono/jwt';
 
 const encode = async (id: number, email: string) => {
   const payload: JWTPayload = {

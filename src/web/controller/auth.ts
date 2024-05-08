@@ -1,9 +1,9 @@
-import { Context } from "hono";
-import { HTTPException } from "hono/http-exception";
-import { getReasonPhrase, StatusCodes } from "http-status-codes";
-import { verify } from "../../lib/encryption";
-import { encode } from "../../lib/jwt";
-import { UserService } from "../../service/user";
+import { Context } from 'hono';
+import { HTTPException } from 'hono/http-exception';
+import { getReasonPhrase, StatusCodes } from 'http-status-codes';
+import { verify } from '../../lib/encryption';
+import { encode } from '../../lib/jwt';
+import { UserService } from '../../service/user';
 
 export class AuthController {
   private service: UserService;
@@ -37,7 +37,7 @@ export class AuthController {
   }
 
   public async me(c: Context) {
-    const payload: JWTPayload = c.get("jwtPayload");
+    const payload: JWTPayload = c.get('jwtPayload');
     const user = await this.service.findByEmail(payload.email);
     return c.json(user);
   }

@@ -1,0 +1,9 @@
+build
+coverage
+node_modules
+.idea
+.next
+.vscode
+pnpm-lock.yaml
+schema/migration
+docker-compose.yml
