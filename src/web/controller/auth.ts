@@ -2,7 +2,7 @@ import { Context } from 'hono';
 import { verify } from '../../lib/encryption';
 import { encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
-import { serveUnauthorized } from './resp/error';
+import { ERRORS, serveBadRequest, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
 
 export class AuthController {
@@ -32,7 +32,11 @@ export class AuthController {
 
   public async register(c: Context) {
     const body = await c.req.json();
-    await this.service.create(body.name, body.email, body.password);
+    try {
+      await this.service.create(body.name, body.email, body.password);
+    } catch (err) {
+      return serveBadRequest(c, ERRORS.USER_EXISTS);
+    }
     const user = await this.service.findByEmail(body.email);
     const token = await encode(user!.id, user!.email);
     return serveData(c, { user, token });

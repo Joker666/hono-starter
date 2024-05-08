@@ -6,19 +6,24 @@ const serveNotFound = (c: Context) => {
   return c.json({ error: getReasonPhrase(StatusCodes.NOT_FOUND) }, <StatusCode>StatusCodes.NOT_FOUND);
 };
 
+const serveBadRequest = (c: Context, message: string) => {
+  return c.json({ error: message }, <StatusCode>StatusCodes.BAD_REQUEST);
+};
+
 const serveUnauthorized = (c: Context) => {
   return c.json({ error: getReasonPhrase(StatusCodes.UNAUTHORIZED) }, <StatusCode>StatusCodes.UNAUTHORIZED);
 };
 
-const serveInternalServerError = (c: Context) => {
-  return c.json(
-    { error: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR) },
-    <StatusCode>StatusCodes.INTERNAL_SERVER_ERROR,
-  );
+const serveInternalServerError = (c: Context, error: any) => {
+  return c.json({ error: error }, <StatusCode>StatusCodes.INTERNAL_SERVER_ERROR);
 };
 
 const serveError = (c: Context, status: StatusCodes, message: string) => {
   return c.json({ error: message }, <StatusCode>status);
 };
 
-export { serveError, serveInternalServerError, serveNotFound, serveUnauthorized };
+const ERRORS = {
+  USER_EXISTS: 'User already exists',
+};
+
+export { ERRORS, serveBadRequest, serveError, serveInternalServerError, serveNotFound, serveUnauthorized };
