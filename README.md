@@ -18,11 +18,13 @@ pnpm run generate
 ```
 
 ### Migrate
+
 ```bash
 pnpm run migrate
 ```
 
 ### Drop
+
 ```bash
 pnpm run drop
 ```

@@ -22,7 +22,7 @@ export class Routes {
     this.app.notFound((c) => {
       return c.text(
         getReasonPhrase(StatusCodes.NOT_FOUND),
-        StatusCodes.NOT_FOUND
+        StatusCodes.NOT_FOUND,
       );
     });
 
