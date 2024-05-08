@@ -6,6 +6,7 @@ import { UserService } from '../../service/user';
 import { LoginBody, RegistrationBody } from '../middlelayer/validator/user';
 import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
+import { serializeUser } from './serializer/user';
 
 export class AuthController {
   private service: UserService;
@@ -28,8 +29,10 @@ export class AuthController {
     if (!isVerified) {
       return serveUnauthorized(c);
     }
+
     const token = await encode(user.id, user.email);
-    return serveData(c, { user, token });
+    const serializedUser = serializeUser(user);
+    return serveData(c, { token, serializedUser });
   }
 
   public async register(c: Context) {
@@ -47,13 +50,20 @@ export class AuthController {
     if (!user) {
       return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
     }
+
     const token = await encode(user.id, user.email);
-    return serveData(c, { user, token });
+    const serializedUser = serializeUser(user);
+    return serveData(c, { token, serializedUser });
   }
 
   public async me(c: Context) {
     const payload: JWTPayload = c.get('jwtPayload');
     const user = await this.service.findByEmail(payload.email);
-    return serveData(c, user);
+    if (!user) {
+      return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
+    }
+
+    const serializedUser = serializeUser(user);
+    return serveData(c, { serializedUser });
   }
 }
