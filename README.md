@@ -14,10 +14,15 @@ open http://localhost:3000
 ### Generate
 
 ```bash
-pnpm drizzle-kit generate:mysql
+pnpm run generate
 ```
 
 ### Migrate
 ```bash
-pnpm tsx schema/migrate.ts
+pnpm run migrate
+```
+
+### Drop
+```bash
+pnpm run drop
 ```
