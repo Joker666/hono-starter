@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import env from './lib/env';
 
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
@@ -10,8 +10,8 @@ import { trimTrailingSlash } from 'hono/trailing-slash';
 
 import { NODE_ENVIRONMENTS } from './lib/constants';
 import { logger } from './lib/logger';
-import { Routes } from './web/routes';
 import { tracing } from './web/middlelayer/tracing';
+import { Routes } from './web/routes';
 
 const app = new Hono();
 
@@ -25,11 +25,11 @@ app.use(trimTrailingSlash());
 const routes = new Routes(app);
 routes.configure();
 
-if (process.env.NODE_ENV === NODE_ENVIRONMENTS.development) {
+if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
   console.log('Available routes:');
   showRoutes(app);
 }
 
-const port = parseInt(process.env.PORT!);
-logger.info(`Server is running on port: ${port}, env: ${process.env.NODE_ENV}`);
+const port = parseInt(env.PORT);
+logger.info(`Server is running on port: ${port}, env: ${env.NODE_ENV}`);
 serve({ fetch: app.fetch, port });

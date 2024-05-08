@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
+import env from '../lib/env';
 import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
 import { AuthController } from './controller/auth';
@@ -14,8 +15,8 @@ export class Routes {
   }
 
   public configure() {
-    // Status path
-    this.app.get('/status', (c) => {
+    // Index path
+    this.app.get('/', (c) => {
       return c.text('Ok');
     });
 
@@ -46,7 +47,7 @@ export class Routes {
 
   private registerUserRoutes(api: Hono, authCtrl: AuthController) {
     const user = new Hono();
-    const authCheck = jwt({ secret: process.env.SECRET_KEY! });
+    const authCheck = jwt({ secret: env.SECRET_KEY });
 
     user.get('/me', authCheck, authCtrl.me);
     user.post('/login', loginValidator, authCtrl.login);

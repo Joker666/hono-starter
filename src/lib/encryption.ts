@@ -1,11 +1,12 @@
 import crypto from 'crypto';
+import env from './env';
 
 const encrypt = (text: string): string => {
   // Generate a random initialization vector (IV)
   const iv = crypto.randomBytes(16);
 
   // Derive a 256-bit key from the password using SHA-256 hashing
-  const key = crypto.createHash('sha256').update(process.env.SECRET_KEY!).digest('base64').slice(0, 32);
+  const key = crypto.createHash('sha256').update(env.SECRET_KEY).digest('base64').slice(0, 32);
 
   // Create a cipher using AES-256-CBC algorithm
   const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
@@ -26,7 +27,7 @@ const decrypt = (encryptedText: string): string => {
   const iv = Buffer.from(ivHex, 'hex');
 
   // Derive the 256-bit key from the password using SHA-256 hashing
-  const key = crypto.createHash('sha256').update(process.env.SECRET_KEY!).digest('base64').slice(0, 32);
+  const key = crypto.createHash('sha256').update(env.SECRET_KEY).digest('base64').slice(0, 32);
 
   // Create a decipher using AES-256-CBC algorithm
   const decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);

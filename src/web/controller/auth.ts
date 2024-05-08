@@ -32,7 +32,7 @@ export class AuthController {
 
     const token = await encode(user.id, user.email);
     const serializedUser = serializeUser(user);
-    return serveData(c, { token, serializedUser });
+    return serveData(c, { token, user: serializedUser });
   }
 
   public async register(c: Context) {
@@ -53,7 +53,7 @@ export class AuthController {
 
     const token = await encode(user.id, user.email);
     const serializedUser = serializeUser(user);
-    return serveData(c, { token, serializedUser });
+    return serveData(c, { token, user: serializedUser });
   }
 
   public async me(c: Context) {
@@ -64,6 +64,6 @@ export class AuthController {
     }
 
     const serializedUser = serializeUser(user);
-    return serveData(c, { serializedUser });
+    return serveData(c, { user: serializedUser });
   }
 }

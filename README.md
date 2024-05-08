@@ -7,6 +7,8 @@ pnpm install -g pino-pretty
 
 ## Run the app
 
+Create a new file `.env` in the root folder and copy contents from the `.env.template` file.
+
 ```bash
 pnpm run dev
 ```
@@ -34,3 +36,7 @@ pnpm run db:migrate
 ```bash
 pnpm run db:drop
 ```
+
+## License
+
+MIT
