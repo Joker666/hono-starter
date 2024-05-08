@@ -1,7 +1,13 @@
-## Run the app
+## Install dependencies
 
 ```bash
 pnpm install
+pnpm install -g pino-pretty
+```
+
+## Run the app
+
+```bash
 pnpm run dev
 ```
 
@@ -14,17 +20,17 @@ open http://localhost:3000
 ### Generate
 
 ```bash
-pnpm run generate
+pnpm run db:generate
 ```
 
 ### Migrate
 
 ```bash
-pnpm run migrate
+pnpm run db:migrate
 ```
 
 ### Drop
 
 ```bash
-pnpm run drop
+pnpm run db:drop
 ```
