@@ -1,4 +1,5 @@
 import { Context } from "hono";
+import { verify } from "../../lib/encryption";
 import { encode } from "../../lib/jwt";
 import { UserService } from "../../service/user";
 
@@ -13,8 +14,12 @@ export class AuthController {
     this.me = this.me.bind(this);
   }
 
-  public login(c: Context) {
-    return c.json("login");
+  public async login(c: Context) {
+    const body = await c.req.json();
+    const user = await this.service.findByEmail(body.email);
+    const isVerified = verify(body.password, user!.password);
+    const token = await encode(user!.id, user!.email);
+    return c.json({ user, token });
   }
 
   public async register(c: Context) {
