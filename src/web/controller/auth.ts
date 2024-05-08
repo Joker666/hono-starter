@@ -1,6 +1,5 @@
 import { Context } from 'hono';
-import { DB_ERRORS } from '../../lib/constants';
-import { DatabaseError } from '../../lib/database';
+import { DB_ERRORS, DatabaseError } from '../../lib/database';
 import { verify } from '../../lib/encryption';
 import { encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';

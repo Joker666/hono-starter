@@ -23,6 +23,10 @@ export interface DatabaseError {
   sqlMessage: string;
 }
 
+const DB_ERRORS = {
+  DUPLICATE_KEY: 'ER_DUP_ENTRY',
+};
+
 export type User = typeof userTable.$inferSelect;
 export type NewUser = typeof userTable.$inferInsert;
 
@@ -33,4 +37,4 @@ class DBLogger implements drizzleLogger {
 }
 
 const db = drizzle(connection, { schema: schema, mode: 'default', logger: new DBLogger() });
-export { connection, db };
+export { DB_ERRORS, connection, db };
