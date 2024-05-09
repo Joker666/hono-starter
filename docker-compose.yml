@@ -11,14 +11,7 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: db
 
-  dragonfly:
-    image: 'docker.dragonflydb.io/dragonflydb/dragonfly'
-    ulimits:
-      memlock: -1
+  redis:
+    image: redis
     ports:
       - "6379:6379"
-    volumes:
-      - dragonflydata:/data
-
-volumes:
-  dragonflydata:
