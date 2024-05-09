@@ -7,7 +7,7 @@ const QUEUE = {
 };
 
 const TASK = {
-  send_welcome_email: 'send_welcome_email',
+  SendWelcomeEmail: 'SendWelcomeEmail',
 };
 
 const connection = new IORedis({
