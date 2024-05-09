@@ -66,8 +66,6 @@ export class AuthController {
             return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
         }
 
-        await sendWelcomeEmailAsync(user.id);
-
         const serializedUser = serializeUser(user);
         return serveData(c, { user: serializedUser });
     }

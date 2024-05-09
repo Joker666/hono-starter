@@ -1,8 +1,8 @@
-import { UserService } from '../service/user';
 import { Job, Worker } from 'bullmq';
-import { connection, QUEUE, TASK } from '../lib/queue';
-import sendWelcomeEmail from './sendWelcomeEmail';
 import { logger } from '../lib/logger';
+import { QUEUE, TASK, connection } from '../lib/queue';
+import { UserService } from '../service/user';
+import sendWelcomeEmail from './sendWelcomeEmail';
 
 export class Tasker {
     private userService: UserService;
@@ -11,6 +11,7 @@ export class Tasker {
         this.userService = userService;
 
         this.setup = this.setup.bind(this);
+        this.processor = this.processor.bind(this);
     }
 
     public setup() {
@@ -38,7 +39,7 @@ export class Tasker {
     private async processor(job: Job) {
         switch (job.name) {
             case TASK.SendWelcomeEmail: {
-                await sendWelcomeEmail(job.data);
+                await sendWelcomeEmail(job.data, this.userService);
                 break;
             }
         }
