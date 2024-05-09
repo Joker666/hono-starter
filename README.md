@@ -5,15 +5,15 @@ initiated at the start of the application and passed to the controllers and serv
 
 ## Stack
 
-- Authentication: JWT
-- Validation: Zod
-- Logging: Pino
-- ORM: Drizzle
-- DB: MySQL
-- Framework: Hono
-- Runtime: NodeJS
-- Language: TypeScript
-- Package Manager: PNPM
+-   Authentication: JWT
+-   Validation: Zod
+-   Logging: Pino
+-   ORM: Drizzle
+-   DB: MySQL
+-   Framework: Hono
+-   Runtime: NodeJS
+-   Language: TypeScript
+-   Package Manager: PNPM
 
 ## Install dependencies
 

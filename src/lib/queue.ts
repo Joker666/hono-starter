@@ -3,17 +3,17 @@ import IORedis from 'ioredis';
 import env from './env';
 
 const QUEUE = {
-  default: 'default',
+    default: 'default',
 };
 
 const TASK = {
-  SendWelcomeEmail: 'SendWelcomeEmail',
+    SendWelcomeEmail: 'SendWelcomeEmail',
 };
 
 const connection = new IORedis({
-  port: parseInt(env.REDIS_PORT),
-  host: env.REDIS_HOST,
-  maxRetriesPerRequest: null,
+    port: parseInt(env.REDIS_PORT),
+    host: env.REDIS_HOST,
+    maxRetriesPerRequest: null,
 });
 
 // Reuse the ioredis instance

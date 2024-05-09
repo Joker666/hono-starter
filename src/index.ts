@@ -27,13 +27,13 @@ const routes = new Routes(app);
 routes.configure();
 
 if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
-  console.log('Available routes:');
-  showRoutes(app);
+    console.log('Available routes:');
+    showRoutes(app);
 }
 
 // Import worker to make sure it's running
 if (worker.isRunning()) {
-  logger.info('Worker is running');
+    logger.info('Worker is running');
 }
 
 const port = parseInt(env.PORT);
