@@ -9,16 +9,18 @@
   "dependencies": {
     "@hono/node-server": "^1.11.1",
     "@hono/zod-validator": "^0.2.1",
+    "bullmq": "^5.7.8",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.10",
     "hono": "^4.3.2",
     "http-status-codes": "^2.3.0",
+    "ioredis": "^5.4.1",
     "mysql2": "^3.9.7",
     "pino": "^9.0.0",
     "zod": "^3.23.7"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17",
+    "@types/node": "^20.12.8",
     "drizzle-kit": "^0.20.18",
     "prettier": "3.2.5",
     "tsx": "^4.7.1"
