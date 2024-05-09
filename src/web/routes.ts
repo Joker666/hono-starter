@@ -1,3 +1,4 @@
+import { Worker } from 'bullmq';
 import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
 import env from '../lib/env';
@@ -8,9 +9,11 @@ import { Tasker } from '../task/tasker';
 import { AuthController } from './controller/auth';
 import { serveInternalServerError, serveNotFound } from './controller/resp/error';
 import { loginValidator, registrationValidator } from './middlelayer/validator/user';
+import { connection } from '../lib/queue';
 
 export class Routes {
     private app: Hono;
+    private worker?: Worker;
 
     constructor(app: Hono) {
         this.app = app;
@@ -67,5 +70,11 @@ export class Routes {
         if (worker.isRunning()) {
             logger.info('Worker is running');
         }
+        this.worker = worker;
+    }
+
+    public async shutDownWorker() {
+        await this.worker?.close();
+        await connection.quit();
     }
 }
