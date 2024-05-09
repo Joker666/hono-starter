@@ -3,6 +3,7 @@ import { DB_ERRORS, DatabaseError } from '../../lib/database';
 import { verify } from '../../lib/encryption';
 import { JWTPayload, encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
+import sendWelcomeEmailAsync from '../../task/client/sendWelcomeEmailAsync';
 import { LoginBody, RegistrationBody } from '../middlelayer/validator/user';
 import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
@@ -50,6 +51,8 @@ export class AuthController {
     if (!user) {
       return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
     }
+
+    await sendWelcomeEmailAsync(user.id);
 
     const token = await encode(user.id, user.email);
     const serializedUser = serializeUser(user);
