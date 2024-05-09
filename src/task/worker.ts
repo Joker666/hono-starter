@@ -16,11 +16,11 @@ const worker = new Worker(
     { connection },
 );
 
-worker.on('completed', (job: Job, returnvalue: any) => {
+worker.on('completed', (job: Job) => {
     logger.info(`Job ${job.id} completed, name: ${job.name}`);
 });
 
-worker.on('failed', (job: Job | undefined, error: Error, prev: string) => {
+worker.on('failed', (job: Job | undefined, error: Error) => {
     if (job) {
         logger.error(`Job ${job.id} failed, name: ${job.name}, error: ${error.message}`);
     } else {

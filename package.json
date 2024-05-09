@@ -8,7 +8,6 @@
     },
     "type": "module",
     "dependencies": {
-        "@bull-board/hono": "^5.17.1",
         "@hono/node-server": "^1.11.1",
         "@hono/zod-validator": "^0.2.1",
         "bullmq": "^5.7.8",
