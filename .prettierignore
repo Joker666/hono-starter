@@ -5,3 +5,4 @@ node_modules
 pnpm-lock.yaml
 schema/migration
 docker-compose.yml
+README.md

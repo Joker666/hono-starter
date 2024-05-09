@@ -5,15 +5,18 @@ initiated at the start of the application and passed to the controllers and serv
 
 ## Stack
 
--   Authentication: JWT
--   Validation: Zod
--   Logging: Pino
--   ORM: Drizzle
--   DB: MySQL
--   Framework: Hono
--   Runtime: NodeJS
--   Language: TypeScript
--   Package Manager: PNPM
+- Authentication: JWT
+- Validation: Zod
+- Worker: BullMQ
+- Logging: Pino
+- ORM: Drizzle
+- Queue: Redis
+- DB: MySQL
+- Runtime: NodeJS
+- Framework: Hono
+- Formatter: Prettier
+- Language: TypeScript
+- Package Manager: PNPM
 
 ## Install dependencies
 
@@ -27,6 +30,7 @@ pnpm install -g pino-pretty
 Create a new file `.env` in the root folder and copy contents from the `.env.template` file.
 
 ```bash
+docker compose up -d
 pnpm run dev
 ```
 
