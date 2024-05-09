@@ -3,7 +3,8 @@
     "dev": "tsx watch src/index.ts | pino-pretty",
     "db:generate": "drizzle-kit generate:mysql",
     "db:migrate": "tsx schema/migrate.ts",
-    "db:drop": "drizzle-kit drop"
+    "db:drop": "drizzle-kit drop",
+    "build": "tsc"
   },
   "type": "module",
   "dependencies": {
