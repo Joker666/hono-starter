@@ -10,6 +10,7 @@ import { trimTrailingSlash } from 'hono/trailing-slash';
 
 import { NODE_ENVIRONMENTS } from './lib/constants';
 import { logger } from './lib/logger';
+import { worker } from './task/worker';
 import { tracing } from './web/middlelayer/tracing';
 import { Routes } from './web/routes';
 
@@ -28,6 +29,10 @@ routes.configure();
 if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
   console.log('Available routes:');
   showRoutes(app);
+}
+
+if (worker.isRunning()) {
+  logger.info('Worker is running');
 }
 
 const port = parseInt(env.PORT);
