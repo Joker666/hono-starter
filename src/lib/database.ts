@@ -2,7 +2,7 @@ import { Logger as drizzleLogger } from 'drizzle-orm/logger';
 import { drizzle } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
 import * as schema from '../../schema/schema';
-import { userTable } from '../../schema/schema';
+import { userSchema } from '../../schema/schema';
 import env from './env';
 import { logger } from './logger';
 
@@ -21,8 +21,8 @@ export interface DatabaseError {
   sqlMessage: string;
 }
 
-export type User = typeof userTable.$inferSelect;
-export type NewUser = typeof userTable.$inferInsert;
+export type User = typeof userSchema.$inferSelect;
+export type NewUser = typeof userSchema.$inferInsert;
 
 class DBLogger implements drizzleLogger {
   logQuery(query: string, params: unknown[]): void {

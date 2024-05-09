@@ -31,6 +31,7 @@ if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
   showRoutes(app);
 }
 
+// Import worker to make sure it's running
 if (worker.isRunning()) {
   logger.info('Worker is running');
 }
