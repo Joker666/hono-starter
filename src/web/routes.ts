@@ -1,8 +1,10 @@
 import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
 import env from '../lib/env';
+import { logger } from '../lib/logger';
 import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
+import { Tasker } from '../task/tasker';
 import { AuthController } from './controller/auth';
 import { serveInternalServerError, serveNotFound } from './controller/resp/error';
 import { loginValidator, registrationValidator } from './middlelayer/validator/user';
@@ -38,6 +40,9 @@ export class Routes {
         // Setup services
         const userService = new UserService(userRepo);
 
+        // Setup worker
+        this.registerWorker(userService);
+
         // Setup controllers
         const authController = new AuthController(userService);
 
@@ -54,5 +59,13 @@ export class Routes {
         user.post('/register', registrationValidator, authCtrl.register);
 
         api.route('/user', user);
+    }
+
+    private registerWorker(userService: UserService) {
+        const tasker = new Tasker(userService);
+        const worker = tasker.setup();
+        if (worker.isRunning()) {
+            logger.info('Worker is running');
+        }
     }
 }
