@@ -6,10 +6,6 @@ const QUEUE = {
     default: 'default',
 };
 
-const TASK = {
-    SendWelcomeEmail: 'SendWelcomeEmail',
-};
-
 const connection = new IORedis({
     port: parseInt(env.REDIS_PORT),
     host: env.REDIS_HOST,
@@ -30,4 +26,4 @@ const defaultQueue = new Queue(QUEUE.default, {
     },
 });
 
-export { QUEUE, TASK, connection, defaultQueue };
+export { QUEUE, connection, defaultQueue };

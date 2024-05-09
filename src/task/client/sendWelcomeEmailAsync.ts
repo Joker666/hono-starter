@@ -1,5 +1,6 @@
 import { logger } from '../../lib/logger';
-import { TASK, defaultQueue } from '../../lib/queue';
+import { defaultQueue } from '../../lib/queue';
+import { TASK } from '../tasker';
 
 const sendWelcomeEmailAsync = async (userId: number) => {
     const job = await defaultQueue.add(TASK.SendWelcomeEmail, { userId });

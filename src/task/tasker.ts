@@ -1,11 +1,15 @@
 import { Job, Worker } from 'bullmq';
 import { logger } from '../lib/logger';
-import { QUEUE, TASK, connection } from '../lib/queue';
+import { QUEUE, connection } from '../lib/queue';
 import { UserService } from '../service/user';
 import sendWelcomeEmail from './sendWelcomeEmail';
 
-export class Tasker {
-    private userService: UserService;
+const TASK = {
+    SendWelcomeEmail: 'SendWelcomeEmail',
+};
+
+class Tasker {
+    private readonly userService: UserService;
 
     constructor(userService: UserService) {
         this.userService = userService;
@@ -45,3 +49,5 @@ export class Tasker {
         }
     }
 }
+
+export { TASK, Tasker };
