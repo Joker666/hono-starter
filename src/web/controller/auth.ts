@@ -4,7 +4,7 @@ import { verify } from '../../lib/encryption';
 import { JWTPayload, encode } from '../../lib/jwt';
 import { UserService } from '../../service/user';
 import sendWelcomeEmailAsync from '../../task/client/sendWelcomeEmailAsync';
-import { LoginBody, RegistrationBody } from '../middlelayer/validator/user';
+import { LoginBody, RegistrationBody } from '../validator/user';
 import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
 import { serializeUser } from './serializer/user';

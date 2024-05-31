@@ -3,13 +3,13 @@ import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
 import env from '../lib/env';
 import { logger } from '../lib/logger';
+import { connection } from '../lib/queue';
 import { UserRepository } from '../repository/user';
 import { UserService } from '../service/user';
 import { Tasker } from '../task/tasker';
 import { AuthController } from './controller/auth';
 import { serveInternalServerError, serveNotFound } from './controller/resp/error';
-import { loginValidator, registrationValidator } from './middlelayer/validator/user';
-import { connection } from '../lib/queue';
+import { loginValidator, registrationValidator } from './validator/user';
 
 export class Routes {
     private app: Hono;
