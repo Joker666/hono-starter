@@ -61,7 +61,7 @@ export class AuthController {
 
     public async me(c: Context) {
         const payload: JWTPayload = c.get('jwtPayload');
-        const user = await this.service.findByEmail(payload.email);
+        const user = await this.service.findByEmail(payload.email as string);
         if (!user) {
             return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
         }
