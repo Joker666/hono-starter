@@ -1,4 +1,5 @@
 import { Context } from 'hono';
+import { HTTPException } from 'hono/http-exception';
 import { StatusCode } from 'hono/utils/http-status';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 
@@ -19,6 +20,10 @@ const serveUnauthorized = (c: Context) => {
 };
 
 const serveInternalServerError = (c: Context, error: any) => {
+    if (error instanceof HTTPException) {
+        return c.json({ error: error.message }, <StatusCode>error.status);
+    }
+
     return c.json({ error: error }, <StatusCode>StatusCodes.INTERNAL_SERVER_ERROR);
 };
 
