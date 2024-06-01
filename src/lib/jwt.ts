@@ -1,6 +1,10 @@
 import { sign, verify } from 'hono/jwt';
 import env from './env';
-import { JWTPayload } from 'hono/utils/jwt/types';
+
+type JWTPayload = {
+    [key: string]: unknown;
+    exp?: number;
+};
 
 const encode = async (id: number, email: string) => {
     const payload: JWTPayload = {
