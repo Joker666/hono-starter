@@ -6,6 +6,13 @@ type JWTPayload = {
     exp?: number;
 };
 
+/**
+ * Encodes the given id and email into a JWT token with an expiration time of 30 days.
+ *
+ * @param {number} id - The id to be included in the token payload.
+ * @param {string} email - The email to be included in the token payload.
+ * @return {Promise<string>} A promise that resolves to the encoded JWT token.
+ */
 const encode = async (id: number, email: string) => {
     const payload: JWTPayload = {
         sub: id,
