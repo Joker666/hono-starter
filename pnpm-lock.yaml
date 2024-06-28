@@ -13,7 +13,7 @@ importers:
         version: 1.11.4
       '@hono/zod-validator':
         specifier: ^0.2.2
-        version: 0.2.2(hono@4.4.7)(zod@3.23.8)
+        version: 0.2.2(hono@4.4.9)(zod@3.23.8)
       bullmq:
         specifier: ^5.8.2
         version: 5.8.2
@@ -24,8 +24,8 @@ importers:
         specifier: ^0.31.2
         version: 0.31.2(mysql2@3.10.1)
       hono:
-        specifier: ^4.4.7
-        version: 4.4.7
+        specifier: ^4.4.9
+        version: 4.4.9
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
@@ -43,8 +43,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@types/node':
-        specifier: ^20.14.6
-        version: 20.14.6
+        specifier: ^20.14.9
+        version: 20.14.9
       drizzle-kit:
         specifier: ^0.22.7
         version: 0.22.7
@@ -52,8 +52,8 @@ importers:
         specifier: 3.3.2
         version: 3.3.2
       tsx:
-        specifier: ^4.15.6
-        version: 4.15.6
+        specifier: ^4.15.7
+        version: 4.15.7
 
 packages:
 
@@ -514,8 +514,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@types/node@20.14.6':
-    resolution: {integrity: sha512-JbA0XIJPL1IiNnU7PFxDXyfAwcwVVrOoqyzzyQTyMeVhBzkJVMSkC1LlVsRQ2lpqiY4n6Bb9oCS6lzDKVQxbZw==}
+  '@types/node@20.14.9':
+    resolution: {integrity: sha512-06OCtnTXtWOZBJlRApleWndH4JsRVs1pDCc8dLSQp+7PpUpX3ePdHyeNSFTeSe7FtKyQkrlPvHwJOW3SLd8Oyg==}
 
   abort-controller@3.0.0:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
@@ -696,8 +696,8 @@ packages:
   get-tsconfig@4.7.5:
     resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
 
-  hono@4.4.7:
-    resolution: {integrity: sha512-WoQWFQyVFEVRtIzP5sHPv7nvIw+RYL/HRnvnOCDxj6A+BtrwuC9S0vryZbV4IyFcNgOJ87r/phDiC1x2eEo4Gg==}
+  hono@4.4.9:
+    resolution: {integrity: sha512-VW1hnYipHL/XsnSYiCTLJ+Z7iisZYWwSOiKXm9RBV2NKPxNqjfaHqeMFiDl11fK893ofmErvRpX20+FTNjZIjA==}
     engines: {node: '>=16.0.0'}
 
   http-status-codes@2.3.0:
@@ -859,8 +859,8 @@ packages:
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
-  tsx@4.15.6:
-    resolution: {integrity: sha512-is0VQQlfNZRHEuSSTKA6m4xw74IU4AizmuB6lAYLRt9XtuyeQnyJYexhNZOPCB59SqC4JzmSzPnHGBXxf3k0hA==}
+  tsx@4.15.7:
+    resolution: {integrity: sha512-u3H0iSFDZM3za+VxkZ1kywdCeHCn+8/qHQS1MNoO2sONDgD95HlWtt8aB23OzeTmFP9IU4/8bZUdg58Uu5J4cg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -1092,9 +1092,9 @@ snapshots:
 
   '@hono/node-server@1.11.4': {}
 
-  '@hono/zod-validator@0.2.2(hono@4.4.7)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.4.9)(zod@3.23.8)':
     dependencies:
-      hono: 4.4.7
+      hono: 4.4.9
       zod: 3.23.8
 
   '@ioredis/commands@1.2.0': {}
@@ -1117,7 +1117,7 @@ snapshots:
   '@msgpackr-extract/msgpackr-extract-win32-x64@3.0.3':
     optional: true
 
-  '@types/node@20.14.6':
+  '@types/node@20.14.9':
     dependencies:
       undici-types: 5.26.5
 
@@ -1278,7 +1278,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  hono@4.4.7: {}
+  hono@4.4.9: {}
 
   http-status-codes@2.3.0: {}
 
@@ -1442,7 +1442,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsx@4.15.6:
+  tsx@4.15.7:
     dependencies:
       esbuild: 0.21.5
       get-tsconfig: 4.7.5
