@@ -8,23 +8,23 @@
     },
     "type": "module",
     "dependencies": {
-        "@hono/node-server": "^1.11.4",
+        "@hono/node-server": "^1.13.0",
         "@hono/zod-validator": "^0.2.2",
-        "bullmq": "^5.8.2",
+        "bullmq": "^5.13.2",
         "dotenv": "^16.4.5",
-        "drizzle-orm": "^0.31.2",
-        "hono": "^4.4.9",
+        "drizzle-orm": "^0.33.0",
+        "hono": "^4.6.2",
         "http-status-codes": "^2.3.0",
         "ioredis": "^5.4.1",
-        "mysql2": "^3.10.1",
-        "pino": "^9.2.0",
+        "mysql2": "^3.11.3",
+        "pino": "^9.4.0",
         "zod": "^3.23.8"
     },
     "devDependencies": {
-        "@types/node": "^20.14.9",
-        "drizzle-kit": "^0.22.7",
-        "prettier": "3.3.2",
-        "tsx": "^4.15.7"
+        "@types/node": "^22.5.5",
+        "drizzle-kit": "^0.24.2",
+        "prettier": "3.3.3",
+        "tsx": "^4.19.1"
     },
     "engines": {
         "node": ">=20.0.0 <23.0.0"
