@@ -11,7 +11,7 @@ import { AuthController } from './controller/auth';
 import { serveInternalServerError, serveNotFound } from './controller/resp/error';
 import { loginValidator, registrationValidator } from './validator/user';
 
-export class Routes {
+export class Server {
     private app: Hono;
     private worker?: Worker;
 

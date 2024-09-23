@@ -12,7 +12,7 @@ import { NODE_ENVIRONMENTS } from './lib/constants';
 import { connection } from './lib/database';
 import { logger } from './lib/logger';
 import { tracing } from './web/middlelayer/tracing';
-import { Routes } from './web/routes';
+import { Server } from './web/server';
 
 const app = new Hono();
 
@@ -26,8 +26,8 @@ app.use(trimTrailingSlash());
 await connection.ping();
 logger.info('Database connection established');
 
-const routes = new Routes(app);
-routes.configure();
+const server = new Server(app);
+server.configure();
 
 if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
     console.log('Available routes:');
@@ -36,15 +36,15 @@ if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
 
 const port = parseInt(env.PORT);
 logger.info(`Server is running on port: ${port}, env: ${env.NODE_ENV}`);
-const server = serve({ fetch: app.fetch, port });
+const web = serve({ fetch: app.fetch, port });
 
 process.on('SIGTERM', () => {
     logger.info('SIGTERM signal received');
 
     logger.info('Closing http server');
-    server.close(async () => {
+    web.close(async () => {
         logger.info('Closing worker');
-        await routes.shutDownWorker();
+        await server.shutDownWorker();
 
         logger.info('Closing database connection');
         await connection.end();
