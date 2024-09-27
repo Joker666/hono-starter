@@ -1,0 +1,156 @@
+openapi: 3.1.0
+info:
+  description: All APIs currently supported by Hono Starter
+  title: Hono Starter
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+components:
+  schemas:
+    User:
+      properties:
+        createdAt:
+          type: string
+        email:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - createdAt
+      type: object
+  securitySchemes:
+    BearerJwt:
+      bearerFormat: Json Web Token (JWT)
+      scheme: Bearer
+      type: http
+paths:
+  /v1/user/login:
+    post:
+      operationId: login
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+              type: object
+        description: ""
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+          description: The request was successful, and the server has returned the
+            requested resource in the response body.
+        "401":
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    default: Unauthorized
+                    enum:
+                      - Unauthorized
+                    type: string
+                required:
+                  - message
+                type: object
+          description: Authentication is required to access the requested resource. The
+            client must include the appropriate credentials.
+      summary: Login
+      tags:
+        - user
+  /v1/user/me:
+    get:
+      operationId: getUser
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+          description: OK - Successful request with response body
+        "401":
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    default: Unauthorized
+                    enum:
+                      - Unauthorized
+                    type: string
+                required:
+                  - message
+                type: object
+          description: Authentication is required to access the requested resource. The
+            client must include the appropriate credentials.
+      security:
+        - BearerJwt: []
+      summary: Get user
+      tags:
+        - user
+  /v1/user/register:
+    post:
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                password:
+                  type: string
+              required:
+                - name
+                - email
+                - password
+              type: object
+        description: ""
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+          description: Created - Resource successfully created
+        "500":
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    default: Internal Server Error
+                    enum:
+                      - Internal Server Error
+                    type: string
+                required:
+                  - message
+                type: object
+          description: The server encountered an unexpected condition that prevented it
+            from fulfilling the request. Report the issue to the support team if
+            it persists.
+      summary: Register
+      tags:
+        - user
+tags:
+  - description: ""
+    name: user
