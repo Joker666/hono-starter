@@ -63,6 +63,14 @@ yq eval -o=json static/openapi.yaml > static/openapi.json
 
 And the JSON doc will get generated.
 
+## Drizzle Studio For Database Browsing
+
+```bash
+pnpm drizzle-kit studio
+open https://local.drizzle.studio/
+```
+
+
 ## License
 
 MIT
