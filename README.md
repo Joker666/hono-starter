@@ -4,7 +4,7 @@ A Hono starter boilerplate for TypeScript with minimal dependencies and a clean 
 initiated at the start of the application and passed to the controllers and services. A swagger API doc is attached in
 the static folder: `openapi.yaml`.
 
-### API Doc power by Swagger UI
+### API Doc powered by Swagger UI
 <img width="1538" alt="Screenshot 2024-09-28 at 12 48 21 AM" src="https://github.com/user-attachments/assets/7b1ea200-30ef-4ad6-937d-e6767905e41e">
 
 ### Database browser powered by Drizzle Studio
