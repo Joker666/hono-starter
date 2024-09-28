@@ -8,7 +8,7 @@ the static folder: `openapi.yaml`.
 <img width="1526" alt="Screenshot 2024-09-28 at 12 31 53 AM" src="https://github.com/user-attachments/assets/f91b5882-81f8-4268-a2d8-98987e06b18a">
 
 ### Database browser power by Drizzle Studio
-<img width="1567" alt="Screenshot 2024-09-28 at 12 40 56 AM" src="https://github.com/user-attachments/assets/9ed8350b-0ded-4653-a92e-0184e2df20f7">
+<img width="1571" alt="Screenshot 2024-09-28 at 12 46 26 AM" src="https://github.com/user-attachments/assets/c8d43dd4-9d93-4ae7-8a4c-7756b84ef9f7">
 
 ## Stack
 
