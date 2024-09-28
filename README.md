@@ -1,8 +1,10 @@
 # Hono Starter
 
-A hono starter boilerplate for TypeScript with minimal dependencies and clean architecture. All dependencies are
+A Hono starter boilerplate for TypeScript with minimal dependencies and clean architecture. All dependencies are
 initiated at the start of the application and passed to the controllers and services. A swagger API doc is attached in
 the static folder: `openapi.yaml`.
+
+<img width="1526" alt="Screenshot 2024-09-28 at 12 31 53 AM" src="https://github.com/user-attachments/assets/f91b5882-81f8-4268-a2d8-98987e06b18a">
 
 ## Stack
 
@@ -61,7 +63,7 @@ https://github.com/mikefarah/yq
 yq eval -o=json static/openapi.yaml > static/openapi.json
 ```
 
-And the JSON doc will get generated.
+And the JSON doc will be generated.
 
 ## Drizzle Studio For Database Browsing
 
