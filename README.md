@@ -5,7 +5,7 @@ initiated at the start of the application and passed to the controllers and serv
 the static folder: `openapi.yaml`.
 
 ### API Doc power by Swagger UI
-<img width="1526" alt="Screenshot 2024-09-28 at 12 31 53 AM" src="https://github.com/user-attachments/assets/f91b5882-81f8-4268-a2d8-98987e06b18a">
+<img width="1538" alt="Screenshot 2024-09-28 at 12 48 21 AM" src="https://github.com/user-attachments/assets/7b1ea200-30ef-4ad6-937d-e6767905e41e">
 
 ### Database browser power by Drizzle Studio
 <img width="1571" alt="Screenshot 2024-09-28 at 12 46 26 AM" src="https://github.com/user-attachments/assets/c8d43dd4-9d93-4ae7-8a4c-7756b84ef9f7">
