@@ -1,7 +1,8 @@
 # Hono Starter
 
 A hono starter boilerplate for TypeScript with minimal dependencies and clean architecture. All dependencies are
-initiated at the start of the application and passed to the controllers and services.
+initiated at the start of the application and passed to the controllers and services. A swagger API doc is attached in
+the static folder: `openapi.yaml`.
 
 ## Stack
 
