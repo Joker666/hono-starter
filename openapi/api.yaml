@@ -5,29 +5,6 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:3000
-components:
-  schemas:
-    User:
-      properties:
-        createdAt:
-          type: string
-        email:
-          type: string
-        id:
-          type: integer
-        name:
-          type: string
-      required:
-        - id
-        - name
-        - email
-        - createdAt
-      type: object
-  securitySchemes:
-    BearerJwt:
-      bearerFormat: Json Web Token (JWT)
-      scheme: Bearer
-      type: http
 paths:
   /v1/user/login:
     post:
@@ -40,11 +17,10 @@ paths:
               properties:
                 email:
                   type: string
+                  required: true
                 password:
                   type: string
-              required:
-                - email
-                - password
+                  required: true
               type: object
         description: ""
         required: true
@@ -61,19 +37,13 @@ paths:
             application/json:
               schema:
                 properties:
-                  message:
-                    default: Unauthorized
-                    enum:
-                      - Unauthorized
+                  error:
                     type: string
-                required:
-                  - message
-                type: object
           description: Authentication is required to access the requested resource. The
             client must include the appropriate credentials.
       summary: Login
       tags:
-        - user
+        - User
   /v1/user/me:
     get:
       operationId: getUser
@@ -89,21 +59,15 @@ paths:
             application/json:
               schema:
                 properties:
-                  message:
-                    default: Unauthorized
-                    enum:
-                      - Unauthorized
+                  error:
                     type: string
-                required:
-                  - message
-                type: object
           description: Authentication is required to access the requested resource. The
             client must include the appropriate credentials.
       security:
-        - BearerJwt: []
+        - bearerAuth: []
       summary: Get user
       tags:
-        - user
+        - User
   /v1/user/register:
     post:
       operationId: register
@@ -114,14 +78,13 @@ paths:
               properties:
                 email:
                   type: string
+                  required: true
                 name:
                   type: string
+                  required: true
                 password:
                   type: string
-              required:
-                - name
-                - email
-                - password
+                  required: true
               type: object
         description: ""
         required: true
@@ -137,20 +100,36 @@ paths:
             application/json:
               schema:
                 properties:
-                  message:
-                    default: Internal Server Error
-                    enum:
-                      - Internal Server Error
+                  error:
                     type: string
-                required:
-                  - message
-                type: object
           description: The server encountered an unexpected condition that prevented it
             from fulfilling the request. Report the issue to the support team if
             it persists.
       summary: Register
       tags:
-        - user
+        - User
+components:
+  schemas:
+    User:
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - createdAt
+      type: object
+  securitySchemes:
+    bearerAuth:
+      scheme: Bearer
+      type: http
 tags:
   - description: ""
-    name: user
+    name: User
