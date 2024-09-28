@@ -58,6 +58,17 @@ pnpm run db:migrate
 pnpm run db:drop
 ```
 
+## API Doc
+The OpenAPI YAML doc is in the `openapi` folder. To generate a `json` doc from the `yaml` doc, use `yq`.
+
+https://github.com/mikefarah/yq
+
+```bash
+yq eval -o=json openapi/api.yaml > openapi/api.json
+```
+
+And the JSON doc will get generated.
+
 ## License
 
 MIT
