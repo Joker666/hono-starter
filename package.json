@@ -9,6 +9,7 @@
     "type": "module",
     "dependencies": {
         "@hono/node-server": "^1.13.0",
+        "@hono/swagger-ui": "^0.4.1",
         "@hono/zod-validator": "^0.2.2",
         "bullmq": "^5.13.2",
         "dotenv": "^16.4.5",

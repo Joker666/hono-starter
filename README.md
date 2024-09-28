@@ -34,10 +34,6 @@ docker compose up -d
 pnpm run dev
 ```
 
-```bash
-open http://localhost:3000
-```
-
 ## Migration
 
 ### Generate
@@ -52,19 +48,19 @@ pnpm run db:generate
 pnpm run db:migrate
 ```
 
-### Drop
-
-```bash
-pnpm run db:drop
-```
-
 ## API Doc
-The OpenAPI YAML doc is in the `openapi` folder. To generate a `json` doc from the `yaml` doc, use `yq`.
+The OpenAPI YAML doc is in the `openapi` folder.
+
+If you need the JSON file, it can be generated with the help of `yq`.
 
 https://github.com/mikefarah/yq
 
 ```bash
-yq eval -o=json openapi/api.yaml > openapi/api.json
+yq eval -o=json static/openapi.yaml > static/openapi.json
+```
+
+```bash
+open http://localhost:3000/doc
 ```
 
 And the JSON doc will get generated.

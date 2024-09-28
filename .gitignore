@@ -4,4 +4,4 @@ node_modules
 dist
 
 .env
-/openapi/api.json
+/static/openapi.json

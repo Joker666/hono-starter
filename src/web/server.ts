@@ -1,3 +1,5 @@
+import { serveStatic } from '@hono/node-server/serve-static';
+import { swaggerUI } from '@hono/swagger-ui';
 import { Worker } from 'bullmq';
 import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
@@ -24,6 +26,12 @@ export class Server {
         this.app.get('/', (c) => {
             return c.text('Ok');
         });
+
+        // Static files
+        this.app.use('/static/*', serveStatic({ root: './' }));
+
+        // API Doc
+        this.app.get('/doc', swaggerUI({ url: '/static/openapi.yaml' }));
 
         // Universal catchall
         this.app.notFound((c) => {
