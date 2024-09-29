@@ -57,7 +57,7 @@ open http://localhost:3000/doc
 ```
 
 ## API Doc
-The OpenAPI YAML doc is in the `openapi` folder.
+The OpenAPI YAML doc is in the `static` folder.
 
 If you need the JSON file, it can be generated with the help of `yq`.
 
