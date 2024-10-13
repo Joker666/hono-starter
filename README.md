@@ -75,8 +75,3 @@ And the JSON doc will be generated.
 pnpm drizzle-kit studio
 open https://local.drizzle.studio/
 ```
-
-
-## License
-
-MIT
