@@ -1,8 +1,8 @@
 {
     "scripts": {
         "dev": "tsx watch src/index.ts | pino-pretty",
-        "db:generate": "drizzle-kit generate:mysql",
-        "db:migrate": "tsx schema/migrate.ts",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
         "db:drop": "drizzle-kit drop",
         "build": "tsc"
     },
