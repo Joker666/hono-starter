@@ -22,17 +22,17 @@ paths:
                   type: string
                   required: true
               type: object
-        description: ""
+        description: ''
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: '#/components/schemas/User'
           description: The request was successful, and the server has returned the
             requested resource in the response body.
-        "401":
+        '401':
           content:
             application/json:
               schema:
@@ -48,13 +48,13 @@ paths:
     get:
       operationId: getUser
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: '#/components/schemas/User'
           description: OK - Successful request with response body
-        "401":
+        '401':
           content:
             application/json:
               schema:
@@ -86,16 +86,16 @@ paths:
                   type: string
                   required: true
               type: object
-        description: ""
+        description: ''
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: '#/components/schemas/User'
           description: Created - Resource successfully created
-        "500":
+        '500':
           content:
             application/json:
               schema:
@@ -131,5 +131,5 @@ components:
       scheme: Bearer
       type: http
 tags:
-  - description: ""
+  - description: ''
     name: User

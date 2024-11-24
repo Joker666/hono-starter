@@ -30,8 +30,8 @@ const server = new Server(app);
 server.configure();
 
 if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
-    console.log('Available routes:');
-    showRoutes(app);
+  console.log('Available routes:');
+  showRoutes(app);
 }
 
 const port = parseInt(env.PORT);
@@ -39,17 +39,17 @@ logger.info(`Server is running on port: ${port}, env: ${env.NODE_ENV}`);
 const web = serve({ fetch: app.fetch, port });
 
 process.on('SIGTERM', () => {
-    logger.info('SIGTERM signal received');
+  logger.info('SIGTERM signal received');
 
-    logger.info('Closing http server');
-    web.close(async () => {
-        logger.info('Closing worker');
-        await server.shutDownWorker();
+  logger.info('Closing http server');
+  web.close(async () => {
+    logger.info('Closing worker');
+    await server.shutDownWorker();
 
-        logger.info('Closing database connection');
-        await connection.end();
+    logger.info('Closing database connection');
+    await connection.end();
 
-        logger.info('Exiting...');
-        process.exit(0);
-    });
+    logger.info('Exiting...');
+    process.exit(0);
+  });
 });
