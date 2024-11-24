@@ -22,6 +22,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/node": "^22.9.3",
     "drizzle-kit": "^0.28.1",
     "prettier": "3.3.3",

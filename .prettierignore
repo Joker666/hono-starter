@@ -1,8 +1,0 @@
-coverage
-node_modules
-.idea
-.next
-pnpm-lock.yaml
-schema/migration
-docker-compose.yml
-README.md
