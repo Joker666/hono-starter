@@ -7,7 +7,7 @@ const QUEUE = {
 };
 
 const connection = new IORedis({
-  port: parseInt(env.REDIS_PORT),
+  port: Number.parseInt(env.REDIS_PORT),
   host: env.REDIS_HOST,
   maxRetriesPerRequest: null,
 });

@@ -1,6 +1,6 @@
-import { Context } from 'hono';
-import { StatusCode } from 'hono/utils/http-status';
-import { StatusCodes } from 'http-status-codes';
+import type { Context } from 'hono';
+import type { StatusCode } from 'hono/utils/http-status';
+import type { StatusCodes } from 'http-status-codes';
 
 const serveData = (c: Context, data: any) => {
   return c.json({ data });

@@ -1,5 +1,5 @@
-import { Context } from 'hono';
-import { ZodError, ZodObject } from 'zod';
+import type { Context } from 'hono';
+import type { ZodError, ZodObject } from 'zod';
 import { serveUnprocessableEntity } from '../controller/resp/error';
 
 const getErrorPhrase = (error: ZodError) => {

@@ -34,7 +34,7 @@ if (env.NODE_ENV === NODE_ENVIRONMENTS.development) {
   showRoutes(app);
 }
 
-const port = parseInt(env.PORT);
+const port = Number.parseInt(env.PORT);
 logger.info(`Server is running on port: ${port}, env: ${env.NODE_ENV}`);
 const web = serve({ fetch: app.fetch, port });
 

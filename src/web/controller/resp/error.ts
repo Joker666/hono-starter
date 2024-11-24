@@ -1,6 +1,6 @@
-import { Context } from 'hono';
+import type { Context } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import { StatusCode } from 'hono/utils/http-status';
+import type { StatusCode } from 'hono/utils/http-status';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 
 const serveNotFound = (c: Context) => {

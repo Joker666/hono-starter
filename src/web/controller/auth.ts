@@ -1,10 +1,10 @@
-import { Context } from 'hono';
-import { DB_ERRORS, DatabaseError } from '../../lib/database';
+import type { Context } from 'hono';
+import { DB_ERRORS, type DatabaseError } from '../../lib/database';
 import { verify } from '../../lib/encryption';
-import { JWTPayload, encode } from '../../lib/jwt';
-import { UserService } from '../../service/user';
+import { type JWTPayload, encode } from '../../lib/jwt';
+import type { UserService } from '../../service/user';
 import sendWelcomeEmailAsync from '../../task/client/sendWelcomeEmailAsync';
-import { LoginBody, RegistrationBody } from '../validator/user';
+import type { LoginBody, RegistrationBody } from '../validator/user';
 import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
 import { serveData } from './resp/resp';
 import { serializeUser } from './serializer/user';

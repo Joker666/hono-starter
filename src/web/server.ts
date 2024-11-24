@@ -1,6 +1,6 @@
 import { serveStatic } from '@hono/node-server/serve-static';
 import { swaggerUI } from '@hono/swagger-ui';
-import { Worker } from 'bullmq';
+import type { Worker } from 'bullmq';
 import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
 import env from '../lib/env';

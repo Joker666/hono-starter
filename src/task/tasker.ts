@@ -1,7 +1,7 @@
-import { Job, Worker } from 'bullmq';
+import { type Job, Worker } from 'bullmq';
 import { logger } from '../lib/logger';
 import { QUEUE, connection } from '../lib/queue';
-import { UserService } from '../service/user';
+import type { UserService } from '../service/user';
 import sendWelcomeEmail from './sendWelcomeEmail';
 
 const TASK = {

@@ -1,5 +1,5 @@
 import { logger } from '../lib/logger';
-import { UserService } from '../service/user';
+import type { UserService } from '../service/user';
 
 const sendWelcomeEmail = async (data: any, userService: UserService) => {
   const user = await userService.find(data.userId);
