@@ -5,7 +5,7 @@ import type { UserService } from '../service/user';
 import sendWelcomeEmail from './sendWelcomeEmail';
 
 const TASK = {
-  SendWelcomeEmail: 'SendWelcomeEmail',
+  SendWelcomeEmail: 'send_code_completion',
 };
 
 class Tasker {

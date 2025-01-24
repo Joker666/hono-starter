@@ -13,7 +13,7 @@ type JWTPayload = {
  * @param {string} email - The email to be included in the token payload.
  * @return {Promise<string>} A promise that resolves to the encoded JWT token.
  */
-const encode = async (id: number, email: string) => {
+const encode = async (id: number, email: string): Promise<string> => {
   const payload: JWTPayload = {
     sub: id,
     email: email,
