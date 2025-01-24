@@ -1,13 +1,18 @@
-import type { Context } from 'hono';
-import { DB_ERRORS, type DatabaseError } from '../../lib/database.js';
-import { verify } from '../../lib/encryption.js';
-import { type JWTPayload, encode } from '../../lib/jwt.js';
-import type { UserService } from '@service/user.js';
-import sendWelcomeEmailAsync from '../../task/client/sendWelcomeEmailAsync.js';
-import type { LoginBody, RegistrationBody } from '../validator/user.js';
-import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error.js';
-import { serveData } from './resp/resp.js';
-import { serializeUser } from './serializer/user.js';
+import type { Context } from "hono";
+import { DB_ERRORS, type DatabaseError } from "../../lib/database.js";
+import { verify } from "../../lib/encryption.js";
+import { type JWTPayload, encode } from "../../lib/jwt.js";
+import type { UserService } from "../../service/user.js";
+import sendWelcomeEmailAsync from "../../task/client/sendWelcomeEmailAsync.js";
+import type { LoginBody, RegistrationBody } from "../validator/user.js";
+import {
+  ERRORS,
+  serveBadRequest,
+  serveInternalServerError,
+  serveUnauthorized,
+} from "./resp/error.js";
+import { serveData } from "./resp/resp.js";
+import { serializeUser } from "./serializer/user.js";
 
 export class AuthController {
   private service: UserService;
@@ -60,7 +65,7 @@ export class AuthController {
   }
 
   public async me(c: Context) {
-    const payload: JWTPayload = c.get('jwtPayload');
+    const payload: JWTPayload = c.get("jwtPayload");
     const user = await this.service.findByEmail(payload.email as string);
     if (!user) {
       return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
