@@ -1,5 +1,5 @@
 import type { Context } from 'hono';
-import type { StatusCode } from 'hono/utils/http-status';
+import type { ContentfulStatusCode } from 'hono/utils/http-status';
 import type { StatusCodes } from 'http-status-codes';
 
 const serveData = (c: Context, data: any) => {
@@ -7,7 +7,7 @@ const serveData = (c: Context, data: any) => {
 };
 
 const serve = (c: Context, status: StatusCodes, data: any) => {
-  return c.json({ data }, <StatusCode>status);
+  return c.json({ data }, <ContentfulStatusCode>status);
 };
 
 export { serve, serveData };
