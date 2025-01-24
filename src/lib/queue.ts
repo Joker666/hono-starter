@@ -1,9 +1,9 @@
-import { Queue } from "bullmq";
-import IORedis from "ioredis";
-import env from "./env.js";
+import { Queue } from 'bullmq';
+import IORedis from 'ioredis';
+import env from './env.js';
 
 const QUEUE = {
-  default: "default",
+  default: 'default',
 };
 
 const connection = new IORedis.default({
