@@ -1,6 +1,6 @@
 import { validator } from 'hono/validator';
 import { z } from 'zod';
-import { validateSchema } from './validator';
+import { validateSchema } from './validator.js';
 
 const loginSchema = z.object({
   email: z.string().email(),

@@ -1,17 +1,16 @@
 import { Queue } from 'bullmq';
 import IORedis from 'ioredis';
-import env from './env';
+import env from './env.js';
 
 const QUEUE = {
   default: 'default',
 };
 
-const connection = new IORedis({
+const connection = new IORedis.default({
   port: Number.parseInt(env.REDIS_PORT),
   host: env.REDIS_HOST,
   maxRetriesPerRequest: null,
 });
-
 // Reuse the ioredis instance
 const defaultQueue = new Queue(QUEUE.default, {
   connection,
@@ -26,4 +25,4 @@ const defaultQueue = new Queue(QUEUE.default, {
   },
 });
 
-export { QUEUE, connection, defaultQueue };
+export { connection, defaultQueue, QUEUE };

@@ -1,5 +1,5 @@
 import { sign, verify } from 'hono/jwt';
-import env from './env';
+import env from './env.js';
 
 type JWTPayload = {
   [key: string]: unknown;

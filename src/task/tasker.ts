@@ -1,8 +1,8 @@
 import { type Job, Worker } from 'bullmq';
-import { logger } from '../lib/logger';
-import { QUEUE, connection } from '../lib/queue';
-import type { UserService } from '../service/user';
-import sendWelcomeEmail from './sendWelcomeEmail';
+import { logger } from '../lib/logger.js';
+import { QUEUE, connection } from '../lib/queue.js';
+import type { UserService } from '../service/user.js';
+import sendWelcomeEmail from './sendWelcomeEmail.js';
 
 const TASK = {
   SendWelcomeEmail: 'send_code_completion',

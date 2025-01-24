@@ -1,4 +1,4 @@
-import env from './lib/env';
+import env from './lib/env.js';
 
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
@@ -8,11 +8,11 @@ import { showRoutes } from 'hono/dev';
 import { logger as httpLogger } from 'hono/logger';
 import { trimTrailingSlash } from 'hono/trailing-slash';
 
-import { NODE_ENVIRONMENTS } from './lib/constants';
-import { connection } from './lib/database';
-import { logger } from './lib/logger';
-import { tracing } from './web/middlelayer/tracing';
-import { Server } from './web/server';
+import { NODE_ENVIRONMENTS } from './lib/constants.js';
+import { connection } from './lib/database.js';
+import { logger } from './lib/logger.js';
+import { tracing } from './web/middlelayer/tracing.js';
+import { Server } from './web/server.js';
 
 const app = new Hono();
 

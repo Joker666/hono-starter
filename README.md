@@ -32,6 +32,7 @@ the static folder: `openapi.yaml`.
 
 ```bash
 pnpm install
+pnpm install -g typescript
 pnpm install -g pino-pretty
 ```
 

@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import env from './env';
+import env from './env.js';
 
 const encrypt = (text: string): string => {
   // Generate a random initialization vector (IV)

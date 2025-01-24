@@ -3,15 +3,15 @@ import { swaggerUI } from '@hono/swagger-ui';
 import type { Worker } from 'bullmq';
 import { Hono } from 'hono';
 import { jwt } from 'hono/jwt';
-import env from '../lib/env';
-import { logger } from '../lib/logger';
-import { connection } from '../lib/queue';
-import { UserRepository } from '../repository/user';
-import { UserService } from '../service/user';
-import { Tasker } from '../task/tasker';
-import { AuthController } from './controller/auth';
-import { serveInternalServerError, serveNotFound } from './controller/resp/error';
-import { loginValidator, registrationValidator } from './validator/user';
+import env from '../lib/env.js';
+import { logger } from '../lib/logger.js';
+import { connection } from '../lib/queue.js';
+import { UserRepository } from '../repository/user.js';
+import { UserService } from '../service/user.js';
+import { Tasker } from '../task/tasker.js';
+import { AuthController } from './controller/auth.js';
+import { serveInternalServerError, serveNotFound } from './controller/resp/error.js';
+import { loginValidator, registrationValidator } from './validator/user.js';
 
 export class Server {
   private app: Hono;

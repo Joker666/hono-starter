@@ -1,13 +1,13 @@
 import type { Context } from 'hono';
-import { DB_ERRORS, type DatabaseError } from '../../lib/database';
-import { verify } from '../../lib/encryption';
-import { type JWTPayload, encode } from '../../lib/jwt';
-import type { UserService } from '../../service/user';
-import sendWelcomeEmailAsync from '../../task/client/sendWelcomeEmailAsync';
-import type { LoginBody, RegistrationBody } from '../validator/user';
-import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error';
-import { serveData } from './resp/resp';
-import { serializeUser } from './serializer/user';
+import { DB_ERRORS, type DatabaseError } from '../../lib/database.js';
+import { verify } from '../../lib/encryption.js';
+import { type JWTPayload, encode } from '../../lib/jwt.js';
+import type { UserService } from '../../service/user.js';
+import sendWelcomeEmailAsync from '../../task/client/sendWelcomeEmailAsync.js';
+import type { LoginBody, RegistrationBody } from '../validator/user.js';
+import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error.js';
+import { serveData } from './resp/resp.js';
+import { serializeUser } from './serializer/user.js';
 
 export class AuthController {
   private service: UserService;
