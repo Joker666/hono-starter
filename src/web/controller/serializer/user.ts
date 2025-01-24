@@ -1,4 +1,4 @@
-import type { User } from "../../../lib/database.js";
+import type { User } from '../../../lib/database.js';
 
 type UserResponse = {
   id: number;
