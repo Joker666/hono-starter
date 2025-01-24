@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import { userSchema } from '../../schema/schema';
+import { userSchema } from '../schema/schema';
 import { db, type NewUser } from '../lib/database';
 
 export class UserRepository {

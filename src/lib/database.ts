@@ -1,8 +1,8 @@
 import type { Logger as drizzleLogger } from 'drizzle-orm/logger';
 import { drizzle } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
-import * as schema from '../../schema/schema';
-import type { userSchema } from '../../schema/schema';
+import * as schema from '../schema/schema';
+import type { userSchema } from '../schema/schema';
 import env from './env';
 import { logger } from './logger';
 
