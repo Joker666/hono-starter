@@ -11,22 +11,22 @@ services:
       NODE_ENV: ${NODE_ENV}
       SECRET_KEY: ${SECRET_KEY}
 
-      DB_HOST: ${DB_HOST}
+      DB_HOST: db
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
 
-      REDIS_HOST: ${REDIS_HOST}
+      REDIS_HOST: redis
       REDIS_PORT: ${REDIS_PORT}
     depends_on:
-      mysql:
+      db:
         condition: service_healthy
         restart: true
       redis:
         condition: service_healthy
         restart: true
 
-  mysql:
+  db:
     image: mysql
     restart: no
     ports:
