@@ -19,21 +19,34 @@ services:
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
     depends_on:
-      - mysql
-      - redis
+      mysql:
+        condition: service_healthy
+        restart: true
+      redis:
+        condition: service_started
 
   mysql:
     image: mysql
     restart: no
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis
     ports:
       - "6379:6379"
+
+volumes:
+  mysql_data:
