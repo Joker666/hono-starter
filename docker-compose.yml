@@ -5,10 +5,23 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    environment:
+      PORT: ${PORT}
+      LOG_LEVEL: ${LOG_LEVEL}
+      NODE_ENV: ${NODE_ENV}
+      SECRET_KEY: ${SECRET_KEY}
+
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
     depends_on:
       - mysql
       - redis
-      
+
   mysql:
     image: mysql
     restart: no
