@@ -9,7 +9,7 @@ import { logger as httpLogger } from 'hono/logger';
 import { trimTrailingSlash } from 'hono/trailing-slash';
 
 import { NODE_ENVIRONMENTS } from './lib/constants.js';
-import { connection } from './lib/database.js';
+import { connection } from './db/database.js';
 import { logger } from './lib/logger.js';
 import { tracing } from './web/middlelayer/tracing.js';
 import { Server } from './web/server.js';

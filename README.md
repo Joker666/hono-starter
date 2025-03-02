@@ -36,7 +36,7 @@ pnpm install -g typescript
 pnpm install -g pino-pretty
 ```
 
-## Migration
+## Run the app
 
 Create a new file `.env` in the root folder and copy contents from the `.env.template` file.
 
@@ -44,22 +44,21 @@ Create a new file `.env` in the root folder and copy contents from the `.env.tem
 docker compose up -d
 ```
 
-### Generate
+### Generate db table
 
 ```bash
 pnpm run db:generate
 ```
 
-### Migrate
+### Migrate schema
 
 ```bash
 pnpm run db:migrate
 ```
 
-## Run the app
+### Open Swagger UI
 
 ```bash
-pnpm run dev
 open http://localhost:3000/doc
 ```
 
