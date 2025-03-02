@@ -56,10 +56,9 @@ pnpm run db:generate
 pnpm run db:migrate
 ```
 
-## Run the app
+## Open Swagger UI
 
 ```bash
-pnpm run dev
 open http://localhost:3000/doc
 ```
 
