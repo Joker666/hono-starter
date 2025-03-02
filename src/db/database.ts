@@ -1,10 +1,10 @@
 import type { Logger as drizzleLogger } from 'drizzle-orm/logger';
 import { drizzle } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
-import * as schema from '../schema/schema.js';
-import type { userSchema } from '../schema/schema.js';
-import env from './env.js';
-import { logger } from './logger.js';
+import * as schema from './schema/schema.js';
+import type { userSchema } from './schema/schema.js';
+import env from '../lib/env.js';
+import { logger } from '../lib/logger.js';
 
 const DB_ERRORS = {
   DUPLICATE_KEY: 'ER_DUP_ENTRY',

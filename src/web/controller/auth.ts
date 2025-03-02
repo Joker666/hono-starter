@@ -1,5 +1,5 @@
 import type { Context } from 'hono';
-import { DB_ERRORS, type DatabaseError } from '../../lib/database.js';
+import { DB_ERRORS, type DatabaseError } from '../../db/database.js';
 import { verify } from '../../lib/encryption.js';
 import { type JWTPayload, encode } from '../../lib/jwt.js';
 import type { UserService } from '../../service/user.js';
