@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { defineConfig } from 'drizzle-kit';
-import env from './src/lib/env.ts';
+import env from './src/lib/env.js';
 
 export default defineConfig({
   schema: './src/db/schema/schema.ts',

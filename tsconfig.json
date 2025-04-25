@@ -3,7 +3,6 @@
     "target": "ESNext",
     "module": "nodenext",
     "moduleResolution": "nodenext",
-    "allowImportingTsExtensions": true,
     "strict": true,
     "skipLibCheck": true,
     "types": ["node"],
