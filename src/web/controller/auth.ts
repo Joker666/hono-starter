@@ -5,7 +5,7 @@ import { type JWTPayload, encode } from '../../lib/jwt.js';
 import type { UserService } from '../../service/user.js';
 import sendWelcomeEmailAsync from '../../task/client/sendWelcomeEmailAsync.js';
 import type { LoginBody, RegistrationBody } from '../validator/user.js';
-import { ERRORS, serveBadRequest, serveInternalServerError, serveUnauthorized } from './resp/error.js';
+import { ERRORS, serveBadRequest, serveInternalServerError, serveNotFound, serveUnauthorized } from './resp/error.js';
 import { serveData } from './resp/resp.js';
 import { serializeUser } from './serializer/user.js';
 
@@ -49,7 +49,7 @@ export class AuthController {
     }
     const user = await this.service.findByEmail(body.email);
     if (!user) {
-      return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
+      return serveNotFound(c, ERRORS.USER_NOT_FOUND);
     }
 
     await sendWelcomeEmailAsync(user.id);
@@ -63,7 +63,7 @@ export class AuthController {
     const payload: JWTPayload = c.get('jwtPayload');
     const user = await this.service.findByEmail(payload.email as string);
     if (!user) {
-      return serveInternalServerError(c, new Error(ERRORS.USER_NOT_FOUND));
+      return serveNotFound(c, ERRORS.USER_NOT_FOUND);
     }
 
     const serializedUser = serializeUser(user);
